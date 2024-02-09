@@ -22,4 +22,11 @@ def etude(request):
 def tourism(request):
     
     return render(request,'tourismpage.html')
+
+
+
+
+def bisnase(request):
+    
+    return render(request,'bisnasepage.html')
     
