@@ -16,7 +16,6 @@ class CustemRegistrationForm(UserCreationForm):
     
     username = forms.CharField(widget=forms.TextInput(attrs={'autofocus':'True','class':'form-control'}),label="Last Name")
     first_name = forms.CharField(widget=forms.TextInput(attrs={'autofocus':'True','class':'form-control','id':'name'}))
-    phone = PhoneNumberField(widget=forms.NumberInput(attrs={'autofocus':'True','class':'form-control','id':'name'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control','id':'email'}))
     password1 = forms.CharField(label='Password',widget=forms.PasswordInput(attrs={'class':'form-control','id':'name'}))
     password2 = forms.CharField(label='Confirm Password',widget=forms.PasswordInput(attrs={'class':'form-control','id':'name'}))
@@ -24,7 +23,7 @@ class CustemRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         
-        fields = ['username','first_name','phone','email','password1','password2']
+        fields = ['username','first_name','email','password1','password2']
         
         
         

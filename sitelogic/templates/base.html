@@ -88,7 +88,14 @@
 			                    <li class="smooth-menu"><a href="{% url 'tourist' %}">Tourism service</a></li>
 			                    <li class="smooth-menu"><a href="{% url 'bisnes' %}">Business and trade service</a></li>
 								{% if request.user.is_authenticated %}
-			                    <li class="smooth-menu"><a href=""><img style="width:25px;" src="{% static 'images/user.png' %}"> Profile (0)</a></li>
+								{% if user.profaile.image.url %}
+								
+								<li class="smooth-menu"><a href="{% url 'profile' %}"><img style="width:30px; height:30px;border-radius:50%" src="{{user.profaile.image.url}}"> Profile</a></li>
+
+								{% else %}
+								<li class="smooth-menu"><a href="{% url 'profile' %}"><img style="width:25px;" src="{% static 'images/user.png' %}"> Profile</a></li>
+
+								{% endif %}
 			                    <li class="smooth-menu"><a href="{% url 'logout' %}"><img style="width:25px;" src="{% static 'images/logout.png' %}"> Logout </a></li>
 								{% else %}
 			                    <li class="smooth-menu"><a href="{% url 'register' %}"><img style="width:25px;" src="{% static 'images/login.png' %}"> Login / Sing Up</a></li>

@@ -26,3 +26,17 @@ class CustemRegistrationView(View):
         else:
             messages.warning(request,"Personal information is incorrect, please correct it")
         return render(request,"login.html",locals())
+    
+    
+    
+    
+def profile(request):
+    
+    
+    return render(request,'profile.html')
+    
+    
+    
+    
+    
+    
