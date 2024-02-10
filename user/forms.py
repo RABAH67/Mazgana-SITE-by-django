@@ -14,7 +14,7 @@ from phonenumber_field.formfields import PhoneNumberField
 
 class CustemRegistrationForm(UserCreationForm):
     
-    last_name = forms.CharField(widget=forms.TextInput(attrs={'autofocus':'True','class':'form-control','id':'name'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'autofocus':'True','class':'form-control'}),label="Last Name")
     first_name = forms.CharField(widget=forms.TextInput(attrs={'autofocus':'True','class':'form-control','id':'name'}))
     phone = PhoneNumberField(widget=forms.NumberInput(attrs={'autofocus':'True','class':'form-control','id':'name'}))
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class':'form-control','id':'email'}))
@@ -24,4 +24,23 @@ class CustemRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         
-        fields = ['last_name','first_name','phone','email','password1','password2']
+        fields = ['username','first_name','phone','email','password1','password2']
+        
+        
+        
+        
+class LoginForm(AuthenticationForm):
+    
+    username = UsernameField(widget=forms.TextInput(attrs={'autofocus':'True','class':'form-control'}),label="Last Name")
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control','autocomplete':'current-password'}))
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
