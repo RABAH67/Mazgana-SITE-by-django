@@ -3,7 +3,9 @@ from django.contrib import messages
 from django.views import View
 from .forms import CustemRegistrationForm 
 from django.contrib.auth.decorators import login_required
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from sitelogic.models import Univarsty
+
+
 # Create your views here.
 
 
@@ -37,6 +39,10 @@ def profile(request):
     
     
     
+def getoffre(request,univarsty_id):
     
+    detail = get_object_or_404(Univarsty,pk=univarsty_id)
+    
+    return render(request,'getoffre.html',{'detail':detail})
     
     

@@ -1,11 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm ,UsernameField ,UserCreationForm
 from django.contrib.auth.models import User
-from phonenumber_field.formfields import PhoneNumberField
-
-
-
-
 
 
 
@@ -21,8 +16,8 @@ class CustemRegistrationForm(UserCreationForm):
     password2 = forms.CharField(label='Confirm Password',widget=forms.PasswordInput(attrs={'class':'form-control','id':'name'}))
 
     class Meta:
-        model = User
         
+        model = User
         fields = ['username','first_name','email','password1','password2']
         
         

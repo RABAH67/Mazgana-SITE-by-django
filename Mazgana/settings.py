@@ -31,14 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+     
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_countries',
+
     'phonenumber_field',
+    'django_countries',
 
     
     # Apps
@@ -140,7 +142,7 @@ STATICFILES_DIRS = (
 
 LOGIN_REDIRECT_URL = "/profile/"
 
-
+COUNTRIES_FLAG_URL = "flags/{code}.gif"
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

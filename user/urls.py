@@ -12,6 +12,7 @@ urlpatterns = [
     path('login/',auth_view.LoginView.as_view(template_name='register.html',authentication_form=LoginForm),name="login"),
     path('logout/',auth_view.LogoutView.as_view(next_page='login'),name='logout'),
     path('profile/', views.profile,name="profile"),
+    path('get-offre/<int:univarsty_id>/', views.getoffre,name="getoffre"),
 
 
 

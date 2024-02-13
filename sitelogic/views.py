@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import Univarsty
 # Create your views here.
 
 
@@ -13,8 +13,9 @@ def home(request):
 
 
 def etude(request):
-    
-    return render(request,'etudepage.html')
+    univarsity = Univarsty.objects.all()
+
+    return render(request,'etudepage.html',{'univarsity':univarsity})
 
 
 
@@ -30,3 +31,7 @@ def bisnase(request):
     
     return render(request,'bisnasepage.html')
     
+    
+    
+    
+
