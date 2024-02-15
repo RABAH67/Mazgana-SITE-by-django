@@ -33,9 +33,17 @@
           </div>
 
           <ul class="nav nav-pills nav-stacked">
-              <li class="active"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
-              <li><a href="#"> <i class="fa fa-calendar"></i> Recent Activity <span class="label label-warning pull-right r-activity">9</span></a></li>
-              <li><a href="#"> <i class="fa fa-edit"></i> Edit profile</a></li>
+              <li class="active"><a href="#"> <i class="fa fa-user"></i> My services</a></li>
+              {% for comonds in comond %}
+              <li><a href="#"> <i class="fa fa-calendar"></i> <img style="width:200px;" src="{{comonds.post.photo.url}}"><br>
+                {{comonds.post.name}}<br>
+                {{comonds.post.description}}
+            
+            
+            </a></li>
+              <li><a href="#"> <i class="fa "></i>  <span class="label label-warning pull-right r-activity">9</span></a></li>
+              
+              {% endfor %}
           </ul>
       </div>
   </div>
@@ -73,20 +81,10 @@
                       <p><span>Last Name </span>: {{user.first_name}}</p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Country </span>: {{user.profaile.country}}</p>
+                      <p><span>Email </span>: {{user.email}} </p>
                   </div>
-                  <div class="bio-row">
-                      <p><span>Birthday</span>: {{user.profaile.dateOfBirth}}</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Email </span>: {{user.email}}</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>N' Passport  </span>: {{user.profaile.Npassport}}</p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Phone </span>: {{user.phone}}</p>
-                  </div>
+
+
               </div>
           </div>
       </div>

@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm ,UsernameField ,UserCreationForm
 from django.contrib.auth.models import User
+from .models import Command
 
 
 
@@ -29,6 +30,12 @@ class LoginForm(AuthenticationForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control','autocomplete':'current-password'}))
         
 
+
+
+class NewComment(forms.ModelForm):
+    class Meta:
+        model = Command
+        fields = ['phone_number','country','nPassport','dateOfBirth']
         
         
         

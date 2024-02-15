@@ -13,6 +13,6 @@ class Univarsty(models.Model):
     
     def __str__(self):
         
-        return self.name + self.univarstyURL
+        return self.name 
     
 
