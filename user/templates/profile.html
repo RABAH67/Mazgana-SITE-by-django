@@ -35,13 +35,15 @@
           <ul class="nav nav-pills nav-stacked">
               <li class="active"><a href="#"> <i class="fa fa-user"></i> My services</a></li>
               {% for comonds in comond %}
-              <li><a href="#"> <i class="fa fa-calendar"></i> <img style="width:200px;" src="{{comonds.post.photo.url}}"><br>
+              <li><a > <i class="fa fa-calendar"></i> <img style="width:200px;" src="{{comonds.post.photo.url}}"><br>
                 {{comonds.post.name}}<br>
                 {{comonds.post.description}}
             
             
             </a></li>
-              <li><a href="#"> <i class="fa "></i>  <span class="label label-warning pull-right r-activity">9</span></a></li>
+                {% empty %}
+
+              <li><a> <i class="fa "></i> No services<span class="label label-warning pull-right r-activity">0</span></a></li>
               
               {% endfor %}
           </ul>
@@ -49,15 +51,15 @@
   </div>
   <div class="profile-info col-md-9">
 
-    {% if user.profaile.virefayd == True %}
+    {% if comondes.active == True %}
     <div class="info-msg">
         <i class="fa fa-info-circle"></i>
-        The account has been activated.
+        The account has been activated , Identity and documents have been verified.
       </div>
       
       <div class="success-msg">
         <i class="fa fa-check"></i>
-        Identity and documents have been verified.
+        The order has been confirmed.
       </div>
       {% else %}
 
@@ -91,16 +93,16 @@
       <div>
           <div class="row">
             
-            {% if user.profaile.virefayd == True %}
+            {% if comondes.active == True %}
             <div class="col-md-6">
                 <div class="panel">
                     <div class="panel-body">
                         <div class="bio-chart">
-                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2"  data-fgcolor="#e06b7d" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(224, 107, 125); padding: 0px; -webkit-appearance: none; background: none;"></div>
+                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2"  data-fgcolor="#e06b7d" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(224, 107, 125); padding: 0px; -webkit-appearance: none; background: none;"><img style="width:20px; margin-right:20px;" src="{% static 'images/check.png' %}"></div>
                         </div>
                         <div class="bio-desk">
                             <h4 class="red">My Passport</h4>
-                            <a href="{{user.profaile.passportPDF.url}}" target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/passport.png' %}"></a>
+                            <a href="{{comondes.passport.url}}" target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/passport.png' %}"></a>
                               <p>The document will be verified within 24 hours</p>
                           </div>
                     </div>
@@ -110,11 +112,11 @@
                 <div class="panel">
                     <div class="panel-body">
                         <div class="bio-chart">
-                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2"  data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(76, 197, 205); padding: 0px; -webkit-appearance: none; background: none;"></div>
+                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2"  data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(76, 197, 205); padding: 0px; -webkit-appearance: none; background: none;"><img style="width:20px; margin-right:20px;" src="{% static 'images/check.png' %}"></div>
                         </div>
                         <div class="bio-desk">
                             <h4 class="terques">school certificate </h4>
-                            <a href="{{user.profaile.passportPDF.url}}" target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/certificate.png' %}"></a>
+                            <a href="{{comondes.Certafica.url}}" target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/certificate.png' %}"></a>
                               <p>The document will be verified within 24 hours</p>
                         </div>
                     </div>
@@ -124,11 +126,26 @@
                 <div class="panel">
                     <div class="panel-body">
                         <div class="bio-chart">
-                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2"  data-fgcolor="#96be4b" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(150, 190, 75); padding: 0px; -webkit-appearance: none; background: none;"></div>
+                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2"  data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(76, 197, 205); padding: 0px; -webkit-appearance: none; background: none;"><img style="width:20px; margin-right:20px;" src="{% static 'images/check.png' %}"></div>
                         </div>
                         <div class="bio-desk">
-                            <h4 class="green">The contract after signing it and fingerprinting it</h4>
-                            <a href="{{user.profaile.passportPDF.url}}" target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/contract.png' %}"></a>
+                            <h4 class="terques">The service contract after signing and filling it out </h4>
+                            <a href="{{comondes.contrat.url}}" target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/contract (1).png' %}"></a>
+                              <p>The document will be verified within 24 hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="bio-chart">
+                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2"  data-fgcolor="#96be4b" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(150, 190, 75); padding: 0px; -webkit-appearance: none; background: none;"><img style="width:20px; margin-right:20px;" src="{% static 'images/check.png' %}"></div>
+                        </div>
+                        <div class="bio-desk">
+                            <h4 class="green">Passbook
+                            </h4>
+                            <a href="{{comondes.talonImage.url}}" target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/bank-account.png' %}"></a>
                             <p>The document will be verified within 24 hours</p>
                         </div>
                     </div>
@@ -146,7 +163,7 @@
                           </div>
                           <div class="bio-desk">
                               <h4 class="red">My Passport</h4>
-                              <a href="{{user.profaile.passportPDF.url}}" target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/passport.png' %}"></a>
+                              <a  target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/passport.png' %}"></a>
                                 <p>The document will be verified within 24 hours</p>
                             </div>
                       </div>
@@ -160,45 +177,45 @@
                           </div>
                           <div class="bio-desk">
                               <h4 class="terques">school certificate </h4>
-                              <a href="{{user.profaile.passportPDF.url}}" target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/certificate.png' %}"></a>
+                              <a  target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/certificate.png' %}"></a>
                                 <p>The document will be verified within 24 hours</p>
                           </div>
                       </div>
                   </div>
               </div>
               <div class="col-md-6">
-                  <div class="panel">
-                      <div class="panel-body">
-                          <div class="bio-chart">
-                              <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2"  data-fgcolor="#96be4b" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(150, 190, 75); padding: 0px; -webkit-appearance: none; background: none;"><img style="width:20px; margin-right:20px;" src="{% static 'images/close.png' %}"></div>
-                          </div>
-                          <div class="bio-desk">
-                              <h4 class="green">The contract after signing it and fingerprinting it</h4>
-                              <a href="{{user.profaile.passportPDF.url}}" target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/contract.png' %}"></a>
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="bio-chart">
+                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2"  data-fgcolor="#4CC5CD" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(76, 197, 205); padding: 0px; -webkit-appearance: none; background: none;"><img style="width:20px; margin-right:20px;" src="{% static 'images/close.png' %}"></div>
+                        </div>
+                        <div class="bio-desk">
+                            <h4 class="terques">The service contract after signing and filling it out </h4>
+                            <a target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/contract (1).png' %}"></a>
                               <p>The document will be verified within 24 hours</p>
-                          </div>
-                      </div>
-                  </div>
-              </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="bio-chart">
+                            <div style="display:inline;width:100px;height:100px;"><canvas width="100" height="100px"></canvas><input class="knob" data-width="100" data-height="100" data-displayprevious="true" data-thickness=".2"  data-fgcolor="#96be4b" data-bgcolor="#e8e8e8" style="width: 54px; height: 33px; position: absolute; vertical-align: middle; margin-top: 33px; margin-left: -77px; border: 0px; font-weight: bold; font-style: normal; font-variant: normal; font-stretch: normal; font-size: 20px; line-height: normal; font-family: Arial; text-align: center; color: rgb(150, 190, 75); padding: 0px; -webkit-appearance: none; background: none;"><img style="width:20px; margin-right:20px;" src="{% static 'images/close.png' %}"></div>
+                        </div>
+                        <div class="bio-desk">
+                            <h4 class="green">Passbook
+                            </h4>
+                            <a target="_blank "><img style="width:90px; margin-top:20px;" src="{% static 'images/bank-account.png' %}"></a>
+                            <p>The document will be verified within 24 hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
               {% endif %}
           </div>
       </div>
 
-      <div class="panel">
-        <form>
-            <textarea placeholder="Contact us if you have questions ......." rows="2" class="form-control input-lg p-text-area"></textarea>
-        </form>
-        <footer class="panel-footer">
-            <button class="btn btn-warning pull-right">Post</button>
-
-            <ul class="nav nav-pills">
-              <li>
-                  <a href="#"><i class="fa fa-map-marker"></i></a>
-              </li>
-
-          </ul>
-        </footer>
-    </div>
 
 
 

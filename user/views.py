@@ -1,3 +1,4 @@
+from django import forms
 from django.shortcuts import render ,get_object_or_404,redirect
 from django.contrib import messages
 from django.views import View
@@ -36,9 +37,10 @@ class CustemRegistrationView(View):
 def profile(request):
     
     comond = Command.objects.filter(user = request.user)
+    comondes = Command.objects.get(user = request.user)
 
     
-    return render(request,'profile.html',{'comond':comond})
+    return render(request,'profile.html',{'comond':comond,'comondes':comondes})
     
     
     
@@ -48,9 +50,9 @@ def getoffre(request,univarsty_id):
     
     univarsty = detail.univarsty.filter()
     comment_form = NewComment()
-    
+
     if request.method == 'POST':
-        comment_form = NewComment(data=request.POST)
+        comment_form = NewComment(request.POST , request.FILES) 
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
             new_comment.post = detail

@@ -35,7 +35,7 @@ class LoginForm(AuthenticationForm):
 class NewComment(forms.ModelForm):
     class Meta:
         model = Command
-        fields = ['phone_number','country','nPassport','dateOfBirth']
+        fields = ['phone_number','country','nPassport','dateOfBirth','passport','Certafica','contrat','talonImage']
         
         
         
