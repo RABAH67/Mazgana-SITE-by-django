@@ -6,6 +6,7 @@ from .forms import CustemRegistrationForm, NewComment
 from django.contrib.auth.decorators import login_required
 from sitelogic.models import Univarsty 
 from .models import Command
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -33,7 +34,7 @@ class CustemRegistrationView(View):
     
     
     
-    
+@login_required()
 def profile(request):
     
     comond = Command.objects.filter(user = request.user)
@@ -43,7 +44,7 @@ def profile(request):
     return render(request,'profile.html',{'comond':comond,'comondes':comondes})
     
     
-    
+@login_required()
 def getoffre(request,univarsty_id):
     
     detail = get_object_or_404(Univarsty,pk=univarsty_id)
